@@ -1,12 +1,5 @@
 from typing import Iterator
 
-from config import DATA_DIR
-
-
-def read_file():
-    with open(DATA_DIR, 'r') as f:
-        return [i.strip() for i in f.readlines()]
-
 
 class Search:
     def filter_foo(self: Iterator, param: str):
