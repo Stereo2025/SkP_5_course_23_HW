@@ -1,20 +1,23 @@
-def filter_query(param: str, data):
+from typing import Generator, Iterable, List, Union
+
+
+def filter_query(param: str, data: Union[Generator, List[str]]):
     return filter(lambda x: param in x, data)
 
 
-def map_query(param: str, data):
+def map_query(param: str, data: Iterable[str]):
     col_number = int(param)
     return map(lambda x: x.split(' ')[col_number], data)
 
 
-def unique_query(data, *args, **kwargs):
+def unique_query(data: Iterable[str], *args, **kwargs):
     return set(data)
 
 
-def sorted_query(param: str, data):
+def sorted_query(param: str, data: Iterable[str]):
     return sorted(data, reverse=param == 'desc')
 
 
-def limit_query(param: str, data):
+def limit_query(param: str, data: Iterable[str]):
     limit = int(param)
     return list(data)[:limit]

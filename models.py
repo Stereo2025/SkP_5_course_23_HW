@@ -4,8 +4,8 @@ VALID_CMD = ('filter', 'map', 'unique', 'sort', 'limit')
 
 
 class RequestParams(Schema):
-    cmd1 = fields.Str(required=True)
-    value1 = fields.Str(required=True)
+    cmd = fields.Str(required=True)
+    value = fields.Str(required=True)
 
     @validates_schema
     def valid_cdm_params(self, values, *args, **kwargs):

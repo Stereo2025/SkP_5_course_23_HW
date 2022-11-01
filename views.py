@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from flask import Blueprint, Response, request, jsonify
 from marshmallow import ValidationError
 from builder import query_builder
@@ -7,7 +9,7 @@ main_bp = Blueprint('main', __name__)
 
 
 @main_bp.route('/perform_query', methods=['POST'])
-def perform_query() -> Response:
+def perform_query() -> tuple[Response, int] | Response:
     try:
         params = BatchRequestParams().load(data=request.json)
     except ValidationError as error:
